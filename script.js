@@ -1,7 +1,7 @@
 const WIDTH = 600;
 
-const newGridButton = document.querySelector("#new-grid");
-const newGridInput = document.querySelector("#new-grid-input");
+const newGridSlider = document.querySelector("#new-grid-slider");
+const gridSizeLabel = document.querySelector("#grid-size-label");
 
 function createNewGrid(n) {
 
@@ -33,14 +33,19 @@ drawingContainer.classList.add("drawing-container");
 
 document.body.appendChild(drawingContainer);
 
-newGridButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log(e);
+// newGridButton.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     console.log(e);
     
-    // this will definitely have to go. more ideas later?
-    createNewGrid(parseInt(newGridInput.value));
-    newGridInput.value = "";
-});
+//     // this will definitely have to go. more ideas later?
+//     createNewGrid(parseInt(newGridInput.value));
+//     newGridInput.value = "";
+// });
+
+newGridSlider.addEventListener("input", (e) => {
+    createNewGrid(newGridSlider.value);
+    gridSizeLabel.textContent = newGridSlider.value;
+})
 
 createNewGrid(16);
 

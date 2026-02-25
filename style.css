@@ -16,15 +16,8 @@ body {
     height: 100vh;
 }
 
-button#new-grid {
-    margin-top: 20px;
-}
-
-div.row {
-    display: block;
-    margin: 0;
-    padding: 0;
-    height: 30px;
+#new-grid-container {
+    margin-top: 40px;
 }
 
 div.field {
@@ -41,6 +34,10 @@ div.field {
 /* div.field:hover {
     background-color: magenta;
 } */
+
+#new-grid-slider {
+    width: 500px;
+}
 
 div.drawing-container {
     box-sizing: content-box;

@@ -8,11 +8,10 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="ui-container">
-        <form>
-            <input id="new-grid-input">
-            <button id="new-grid">New grid size</button>
-        </form>
+    <div id="new-grid-container">
+        <label for="new-grid-slider" id="grid-size-label">New grid</label>
+        <input type="range" id="new-grid-slider" name="new-grid-slider" min="1" max="100">
+        <!-- <button id="new-grid">New grid size</button> -->
     </div>
 </body>
 </html>
