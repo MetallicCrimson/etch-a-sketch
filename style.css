@@ -19,7 +19,12 @@ body {
 }
 
 #new-grid-container {
-    margin-top: 40px;
+    margin-top: 0px;
+
+    display: flex;
+
+    align-items: flex-end;
+    gap: 40px;
 }
 
 div.field {
@@ -39,6 +44,10 @@ div.field {
 
 #new-grid-slider {
     width: 500px;
+}
+
+#grid-size-label {
+    margin-top: 20px;
 }
 
 div.drawing-container {

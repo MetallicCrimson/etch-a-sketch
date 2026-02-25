@@ -58,7 +58,8 @@ let mouseDownFlag = false;
 let drawingContainer = document.createElement("div");
 drawingContainer.classList.add("drawing-container");
 
-createNewGrid(16);
+
+
 
 drawingContainer.addEventListener("mouseover", enterField);
 drawingContainer.addEventListener("mouseout", leaveField);
@@ -66,7 +67,11 @@ drawingContainer.addEventListener("mousedown", containerMouseDown);
 drawingContainer.addEventListener("mouseup", containerMouseUp);
 newGridSlider.addEventListener("input", (e) => {
     createNewGrid(newGridSlider.value);
-    gridSizeLabel.textContent = newGridSlider.value;
+    gridSizeLabel.textContent = newGridSlider.value + "px";
 });
 
 document.body.appendChild(drawingContainer);
+
+newGridSlider.value = 16;
+gridSizeLabel.textContent = "16px";
+createNewGrid(16);
