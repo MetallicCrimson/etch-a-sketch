@@ -2,6 +2,8 @@ const WIDTH = 600;
 const BGCOLOR = "white";
 const newGridSlider = document.querySelector("#new-grid-slider");
 const gridSizeLabel = document.querySelector("#grid-size-label");
+const colorInput = document.querySelector("#color-input");
+const resetFieldsButton = document.querySelector("#reset-fields-button");
 
 function createNewGrid(n) {
     n = parseInt(n);
@@ -29,7 +31,7 @@ function enterField(e) {
 
     e.target.style.color = e.target.style.backgroundColor;
 
-    e.target.style.backgroundColor = "magenta";
+    e.target.style.backgroundColor = mainColor;
 }
 
 function leaveField(e) {
@@ -43,7 +45,7 @@ function leaveField(e) {
     } else {
         if (mouseDownFlag && e.toElement.classList[0] === "field") {
             e.toElement.style.color = e.toElement.style.backgroundColor;
-            e.toElement.style.backgroundColor = "magenta";
+            e.toElement.style.backgroundColor = mainColor;
         }
     }
 }
@@ -55,7 +57,7 @@ function containerMouseDown(e) {
         return;
     }
 
-    e.target.style.color = "magenta";
+    e.target.style.color = mainColor;
     console.log(e.target);
     mouseDownFlag = true;
 }
@@ -68,8 +70,20 @@ function containerMouseUp(e) {
     mouseDownFlag = false;
 }
 
+function setColor(e) {
+    console.log(e);
+    mainColor = e.target.value;
+}
+
+function resetFields(e) {
+    for (let i = 0; i < currentGridSize**2; i++) {
+        fields[i].style.backgroundColor = BGCOLOR;
+    }
+}
+
 let mouseDownFlag = false;
 let currentGridSize = 0;
+let mainColor = "#000000";
 let drawingContainer = document.createElement("div");
 drawingContainer.classList.add("drawing-container");
 
@@ -81,15 +95,18 @@ drawingContainer.addEventListener("mouseout", leaveField);
 drawingContainer.addEventListener("mousedown", containerMouseDown);
 drawingContainer.addEventListener("mouseup", containerMouseUp);
 window.addEventListener("mouseup", containerMouseUp);
+resetFieldsButton.addEventListener("click", resetFields);
 newGridSlider.addEventListener("input", (e) => {
     createNewGrid(newGridSlider.value);
-    gridSizeLabel.textContent = newGridSlider.value + "px";
+    gridSizeLabel.textContent = newGridSlider.value + "x" + newGridSlider.value;
 });
+
+colorInput.addEventListener("change", setColor);
 
 document.body.appendChild(drawingContainer);
 
 newGridSlider.value = 16;
-gridSizeLabel.textContent = "16px";
+gridSizeLabel.textContent = "16x16";
 let fields = [];
 
 for (let i = 0; i < 10000; i++) {

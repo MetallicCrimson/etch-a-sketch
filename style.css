@@ -19,12 +19,24 @@ body {
 }
 
 #new-grid-container {
-    margin-top: 0px;
-
     display: flex;
-
     align-items: flex-end;
     gap: 40px;
+}
+
+#ui-container {
+    margin-top: 20px;
+
+    justify-content: center;
+
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+
+#ui-container > * {
+    flex-basis: 150px;
 }
 
 div.field {
