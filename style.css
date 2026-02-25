@@ -1,6 +1,8 @@
 body,html {
     margin: 0;
     padding: 0;
+
+    user-select: none;
 }
 
 * {
@@ -48,5 +50,6 @@ div.drawing-container {
 
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
+    min-width: 600px;
+    max-width: 601px;
 }

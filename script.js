@@ -17,6 +17,8 @@ function createNewGrid(n) {
             tempField.style.width = WIDTH/n + "px";
             tempField.style.height = WIDTH/n + "px";
 
+            tempField.setAttribute("draggable", "false");
+
             drawingContainer.appendChild(tempField);
         }
 
@@ -30,6 +32,7 @@ function handleField(e) {
 
 let drawingContainer = document.createElement("div");
 drawingContainer.classList.add("drawing-container");
+drawingContainer.setAttribute("draggable", "false");
 
 document.body.appendChild(drawingContainer);
 
