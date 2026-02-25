@@ -27,9 +27,11 @@ function createNewGrid(n) {
         fields[i].style.display = "initial";
     }
 
-    for (let i = n**2; i < 10000; i++) {
+    for (let i = n**2; i < 10000-currentGridSize; i++) {
         fields[i].style.display = "none";
     }
+
+    currentGridSize = n;
 }
 
 function enterField(e) {
@@ -65,6 +67,7 @@ function containerMouseUp(e) {
 }
 
 let mouseDownFlag = false;
+let currentGridSize = 0;
 let drawingContainer = document.createElement("div");
 drawingContainer.classList.add("drawing-container");
 
