@@ -4,24 +4,6 @@ const newGridSlider = document.querySelector("#new-grid-slider");
 const gridSizeLabel = document.querySelector("#grid-size-label");
 
 function createNewGrid(n) {
-
-    // while (drawingContainer.firstChild) {
-    //     drawingContainer.firstChild.remove();
-    // }
-
-    // for (let i = 0; i < n; i++) {
-
-    //     for (let j = 0; j < n; j++) {
-    //         let tempField = document.createElement("div");
-    //         tempField.classList.add("field");
-    //         tempField.style.width = WIDTH/n + "px";
-    //         tempField.style.height = WIDTH/n + "px";
-
-    //         drawingContainer.appendChild(tempField);
-    //     }
-
-    // }
-
     n = parseInt(n);
 
     for (let i = 0; i < n**2; i++) {
@@ -31,7 +13,6 @@ function createNewGrid(n) {
         fields[i].style.backgroundColor = BGCOLOR;
     }
 
-    // console.log(n, currentGridSize);
     if (n < currentGridSize) {
         console.log(n,currentGridSize);
         for (let i = n**2; i < currentGridSize**2; i++) {
@@ -59,7 +40,6 @@ function leaveField(e) {
     }
 
     if (e.toElement === document.body) {
-        // mouseDownFlag = false;
     } else {
         if (mouseDownFlag && e.toElement.classList[0] === "field") {
             e.toElement.style.color = e.toElement.style.backgroundColor;
@@ -75,7 +55,6 @@ function containerMouseDown(e) {
         return;
     }
 
-    // e.target.style.backgroundColor = "magenta";
     e.target.style.color = "magenta";
     console.log(e.target);
     mouseDownFlag = true;
