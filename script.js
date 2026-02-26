@@ -4,7 +4,15 @@ const newGridSlider = document.querySelector("#new-grid-slider");
 const gridSizeLabel = document.querySelector("#grid-size-label");
 const colorInput = document.querySelector("#color-input");
 const resetFieldsButton = document.querySelector("#reset-fields-button");
+const drawingContainerContainer = document.querySelector("#drawing-container-container");
 
+let mouseDownFlag = false;
+let currentGridSize = 0;
+let mainColor = "#e01dc6";
+let drawingContainer = document.createElement("div");
+
+// technically this doesn't *create* a new grid,
+// just uncovers/hides what it has to uncover/hide
 function createNewGrid(n) {
     n = parseInt(n);
 
@@ -18,7 +26,6 @@ function createNewGrid(n) {
     if (n < currentGridSize) {
         console.log(n,currentGridSize);
         for (let i = n**2; i < currentGridSize**2; i++) {
-            // console.log(i);
             fields[i].style.display = "none";
         }
     }
@@ -50,6 +57,8 @@ function leaveField(e) {
     }
 }
 
+// the following two functs are just to enable drawing by mouse click,
+// and having it not break when the user moves the mouse out of the grid
 function containerMouseDown(e) {
     if (e.target.classList[0] !== "field") return;
 
@@ -81,15 +90,9 @@ function resetFields(e) {
     }
 }
 
-let mouseDownFlag = false;
-let currentGridSize = 0;
-let mainColor = "#000000";
-let drawingContainer = document.createElement("div");
+
+
 drawingContainer.classList.add("drawing-container");
-
-
-
-
 drawingContainer.addEventListener("mouseover", enterField);
 drawingContainer.addEventListener("mouseout", leaveField);
 drawingContainer.addEventListener("mousedown", containerMouseDown);
@@ -101,9 +104,10 @@ newGridSlider.addEventListener("input", (e) => {
     gridSizeLabel.textContent = newGridSlider.value + "x" + newGridSlider.value;
 });
 
+colorInput.value = mainColor;
 colorInput.addEventListener("change", setColor);
 
-document.body.appendChild(drawingContainer);
+drawingContainerContainer.appendChild(drawingContainer);
 
 newGridSlider.value = 16;
 gridSizeLabel.textContent = "16x16";
